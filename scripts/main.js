@@ -17,7 +17,6 @@ navbarToggleButton.addEventListener("click", () => {
 window.addEventListener(
   "resize",
   debounce(() => {
-    console.log("hello");
     if (window.innerWidth >= 992) {
       body.classList.remove("lock");
       body.classList.remove("menu-open");
@@ -27,7 +26,7 @@ window.addEventListener(
 );
 
 window.addEventListener("scroll", () => {
-  window.scrollY > navbar.offsetHeight
+  window.scrollY > 0
     ? navbar.classList.add("shrink")
     : navbar.classList.remove("shrink");
 });
