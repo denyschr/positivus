@@ -5,6 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Positivus</title>
     <link rel="stylesheet" href="styles/main.css" />
+    <script src="scripts/main.js" type="module"></script>
   </head>
-  <body></body>
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="assets/images/positivus-logo.svg"
+            width="220"
+            height="36"
+            alt="Company logo"
+          />
+        </a>
+        <div class="navbar-menu">
+          <nav id="navbar-content">
+            <ul aria-label="Primary">
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Use Cases</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </nav>
+          <button class="button button-border-dark" type="button">
+            Request a quote
+          </button>
+        </div>
+        <button
+          class="navbar-toggle-button"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-controls="navbar-content"
+          aria-expanded="false"
+          data-navbar-toggle-button
+        >
+          <span></span>
+        </button>
+      </div>
+    </header>
+  </body>
 </html>
