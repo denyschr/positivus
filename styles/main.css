@@ -33,7 +33,13 @@
   --container-max-width: 77.5rem;
   --container-spacing: 1rem;
 
-  --navbar-height: clamp(4.375rem, 12vw, 12.375rem);
+  --navbar-min-height: 4.375rem;
+  --navbar-max-height: 12.375rem;
+  --navbar-height: clamp(
+    var(--navbar-min-height),
+    12vw,
+    var(--navbar-max-height)
+  );
 }
 
 /* General */
@@ -48,6 +54,10 @@ body {
   &.lock {
     overflow: hidden;
   }
+}
+
+main {
+  margin-top: var(--navbar-height);
 }
 
 /* Utilities */
@@ -168,6 +178,15 @@ h4,
 
 .navbar {
   --navbar-column-gap: clamp(1.563rem, 2.5vw, 2.5rem);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-light);
+  &.shrink {
+    --navbar-height: var(--navbar-min-height);
+  }
+
   .container {
     display: flex;
     align-items: center;
@@ -175,6 +194,7 @@ h4,
     column-gap: var(--navbar-column-gap);
     min-height: var(--navbar-height);
     padding-block: 0.375rem;
+    transition: min-height 0.2s ease-in-out;
   }
 }
 
