@@ -1,32 +1,8 @@
-import { debounce } from "./helpers.js";
+import initNavbar from "./navbar.js";
+import initMarquees from "./marquee.js";
 
-const body = document.body;
-const navbar = document.querySelector("[data-navbar]");
-const navbarToggleButton = document.querySelector(
-  "[data-navbar-toggle-button]"
-);
+initNavbar();
 
-navbarToggleButton.addEventListener("click", () => {
-  body.classList.toggle("lock");
-  body.classList.contains("menu-open")
-    ? navbarToggleButton.setAttribute("aria-expanded", "false")
-    : navbarToggleButton.setAttribute("aria-expanded", "true");
-  body.classList.toggle("menu-open");
-});
-
-window.addEventListener(
-  "resize",
-  debounce(() => {
-    if (window.innerWidth >= 992) {
-      body.classList.remove("lock");
-      body.classList.remove("menu-open");
-      navbarToggleButton.setAttribute("aria-expanded", "false");
-    }
-  })
-);
-
-window.addEventListener("scroll", () => {
-  window.scrollY > 0
-    ? navbar.classList.add("shrink")
-    : navbar.classList.remove("shrink");
-});
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  initMarquees();
+}
