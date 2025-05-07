@@ -36,7 +36,7 @@
   --container-max-width: 77.5rem;
   --container-spacing: 1rem;
 
-  --section-padding: clamp(1.875rem, 8vw, 4.375rem);
+  --section-padding: clamp(1.875rem, 5vw, 4.375rem);
 
   --navbar-min-height: 4.375rem;
   --navbar-max-height: 11.75rem;
@@ -53,7 +53,7 @@ body {
   min-width: 20rem;
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-regular);
-  font-size: var(--text-size-md);
+  font-size: clamp(var(--text-size-base), 2vw, var(--text-size-md));
   line-height: 1.2;
   color: var(--color-dark);
   background-color: var(--color-light);
@@ -194,12 +194,12 @@ h4,
 /* External links */
 
 .external-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   column-gap: 1rem;
   font-size: var(--text-size-lg);
   line-height: 1.4;
-  > *:has(svg) {
+  svg {
     flex-shrink: 0;
   }
 }
@@ -224,31 +224,6 @@ h4,
 }
 
 .box-light {
-  background-color: var(--color-light);
-}
-
-/* Arrow boxes */
-
-.arrow-box {
-  display: grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: var(--radius-circle);
-  transition: rotate 0.2s ease-in-out;
-  svg {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-}
-
-.arrow-box-dark {
-  color: var(--color-primary);
-  background-color: var(--color-dark-emphasis);
-}
-
-.arrow-box-light {
-  color: var(--color-dark);
   background-color: var(--color-light);
 }
 
@@ -512,6 +487,12 @@ h4,
     &:nth-child(3n) {
       .service-card {
         background-color: var(--color-dark-emphasis);
+        .body {
+          a .arrow-box {
+            color: var(--color-dark);
+            background-color: var(--color-light);
+          }
+        }
       }
     }
   }
@@ -532,9 +513,6 @@ h4,
     &:hover {
       opacity: 0.75;
       box-shadow: none;
-      .arrow-box {
-        rotate: 30deg;
-      }
     }
   }
 
@@ -550,6 +528,19 @@ h4,
       display: flex;
       flex-direction: column;
       align-items: start;
+    }
+
+    a {
+      .arrow-box {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: var(--radius-circle);
+        color: var(--color-primary);
+        background-color: var(--color-dark-emphasis);
+      }
     }
   }
 
@@ -585,6 +576,28 @@ h4,
   }
 }
 
+/* Studies */
+
+.studies-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  color: var(--color-light);
+  li {
+    display: grid;
+    align-items: start;
+    justify-items: start;
+    row-gap: 1.25rem;
+    a {
+      transition: opacity 0.2s ease-in-out;
+      @media (any-hover: hover) {
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+
 /* Media queries */
 
 @media (min-width: 62em) {
@@ -599,6 +612,25 @@ h4,
 
   .toggle-menu-button {
     display: none;
+  }
+}
+
+@media (min-width: 48em) {
+  .studies-list {
+    padding: clamp(2.625rem, 5vw, 4.375rem) clamp(3.125rem, 5vw, 3.75rem);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-dark-emphasis);
+    li {
+      --padding-x: clamp(2rem, 4vw, 4rem);
+      &:not(:first-child) {
+        padding-left: var(--padding-x);
+      }
+
+      &:not(:last-child) {
+        padding-right: var(--padding-x);
+        border-right: 1px solid var(--color-light);
+      }
+    }
   }
 }
 
@@ -692,6 +724,30 @@ h4,
       display: none;
     }
   }
+
+  .studies {
+    .container {
+      width: auto;
+      padding-left: var(--container-spacing);
+    }
+  }
+
+  .studies-list {
+    --spacer: 1.25rem;
+    column-gap: var(--spacer);
+    padding-inline-end: var(--container-spacing);
+    padding-block-end: 1rem;
+    overflow-x: scroll;
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: var(--spacer);
+    li {
+      min-width: 21.875rem;
+      padding: 2.625rem 3.125rem;
+      scroll-snap-align: start;
+      border-radius: var(--radius-lg);
+      background-color: var(--color-dark-emphasis);
+    }
+  }
 }
 
 @media (max-width: 29.99875em) {
@@ -705,7 +761,7 @@ h4,
         grid-column: -1 / 1;
       }
 
-      .external-link {
+      a {
         align-self: end;
         > span {
           position: absolute !important;

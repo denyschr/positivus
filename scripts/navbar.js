@@ -15,14 +15,16 @@ export default function initNavbar() {
     body.classList.toggle("menu-open");
   };
 
-  toggleMenuButton.addEventListener("click", toggleMenu);
-
-  window.addEventListener("scroll", () => {
+  const shrink = () => {
     window.scrollY > 0
       ? navbar.classList.add("shrink")
       : navbar.classList.remove("shrink");
-  });
+  };
 
+  shrink();
+
+  toggleMenuButton.addEventListener("click", toggleMenu);
+  window.addEventListener("scroll", shrink);
   window.addEventListener(
     "resize",
     debounce(() => {
