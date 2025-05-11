@@ -63,7 +63,7 @@ body {
 }
 
 main {
-  margin-top: var(--navbar-height);
+  margin-block-start: var(--navbar-height);
 }
 
 /* Utilities */
@@ -106,7 +106,7 @@ main {
   align-items: center;
   gap: 1.875rem 2.5rem;
   &:not(:last-child) {
-    margin-bottom: clamp(2.5rem, 6vw, 5rem);
+    margin-block-end: clamp(2.5rem, 6vw, 5rem);
   }
 
   .description {
@@ -144,7 +144,7 @@ h3,
 
 h4,
 .heading-4 {
-  font-size: var(--text-size-lg);
+  font-size: clamp(var(--text-size-md), 2vw, var(--text-size-lg));
 }
 
 /* Buttons */
@@ -431,7 +431,7 @@ h4,
     align-items: start;
     justify-content: space-between;
     column-gap: 1.875rem;
-    margin-bottom: clamp(3.75rem, 8vw, 4.375rem);
+    margin-block-end: clamp(3.75rem, 8vw, 4.375rem);
 
     .body {
       display: grid;
@@ -471,24 +471,24 @@ h4,
   grid-template-columns: repeat(auto-fill, minmax(min(28.75rem, 100%), 1fr));
   gap: clamp(1.875rem, 3vw, 2.5rem);
   &:not(:last-child) {
-    margin-bottom: clamp(4.375rem, 10vw, 6.25rem);
+    margin-block-end: clamp(4.375rem, 10vw, 6.25rem);
   }
 
   li {
     &:nth-child(3n + 1) {
-      .service-card {
+      article {
         background-color: var(--color-gray);
       }
     }
 
     &:nth-child(3n + 2) {
-      .service-card {
+      article {
         background-color: var(--color-primary);
       }
     }
 
     &:nth-child(3n) {
-      .service-card {
+      article {
         background-color: var(--color-dark-emphasis);
         .body {
           a .arrow-box {
@@ -499,56 +499,55 @@ h4,
       }
     }
   }
-}
 
-.service-card {
-  display: flex;
-  justify-content: space-between;
-  column-gap: clamp(1rem, 3vw, 1.875rem);
-  position: relative;
-  min-height: 19.375rem;
-  padding: clamp(1.875rem, 3.5vw, 3.125rem);
-  border: 1px solid var(--color-dark-emphasis);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-base);
-  transition: opacity 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  @media (any-hover: hover) {
-    &:hover {
-      opacity: 0.75;
-      box-shadow: none;
-    }
-  }
-
-  .body {
+  article {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    align-items: start;
-    row-gap: 1rem;
-    width: 100%;
-    max-width: 13.75rem;
-    h3 {
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-    }
-
-    a {
-      .arrow-box {
-        display: grid;
-        place-items: center;
-        flex-shrink: 0;
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: var(--radius-circle);
-        color: var(--color-primary);
-        background-color: var(--color-dark-emphasis);
+    column-gap: clamp(1rem, 3vw, 1.875rem);
+    position: relative;
+    min-height: 19.375rem;
+    padding: clamp(1.875rem, 3.5vw, 3.125rem);
+    border: 1px solid var(--color-dark-emphasis);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-base);
+    transition: opacity 0.2s ease-in-out;
+    @media (any-hover: hover) {
+      &:hover {
+        opacity: 0.75;
       }
     }
-  }
 
-  .image {
-    align-self: center;
+    .body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: start;
+      row-gap: 1rem;
+      width: 100%;
+      max-width: 13.75rem;
+      h3 {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+      }
+
+      a {
+        .arrow-box {
+          display: grid;
+          place-items: center;
+          flex-shrink: 0;
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: var(--radius-circle);
+          color: var(--color-primary);
+          background-color: var(--color-dark-emphasis);
+        }
+      }
+    }
+
+    .image {
+      align-self: center;
+    }
   }
 }
 
@@ -685,7 +684,79 @@ h4,
 
     .panel {
       padding-block: var(--gap-y) var(--padding-y);
-      border-top: 1px solid var(--color-dark);
+      border-block-start: 1px solid var(--color-dark);
+    }
+  }
+}
+
+/* Team */
+
+.team {
+  .see-all {
+    text-align: right;
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(21.875rem, 100%), 1fr));
+  gap: clamp(1.875rem, 3.5vw, 2.5rem);
+  &:not(:last-child) {
+    margin-block-end: 2.5rem;
+  }
+
+  article {
+    height: 100%;
+    padding: clamp(1.25rem, 5vw, 2.5rem) clamp(1.25rem, 5vw, 2.188rem);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-dark-emphasis);
+    background-color: var(--color-light);
+    box-shadow: var(--shadow-base);
+    header {
+      display: flex;
+      align-items: start;
+      .image {
+        flex: 0 0 auto;
+        width: 6.25rem;
+        &:not(:last-child) {
+          margin-inline-end: 1.25rem;
+        }
+      }
+
+      .info {
+        align-self: end;
+        &:not(:last-child) {
+          margin-inline-end: 0.5rem;
+        }
+
+        h3 {
+          &:not(:last-child) {
+            margin-block-end: 0.125rem;
+          }
+        }
+      }
+
+      a {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 2.125rem;
+        height: 2.125rem;
+        margin-inline-start: auto;
+        color: var(--color-primary);
+        border-radius: var(--radius-circle);
+        background-color: var(--color-dark);
+      }
+    }
+
+    .body {
+      --margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+      margin-block-start: var(--margin-top);
+      padding-block-start: var(--margin-top);
+      border-block-start: 1px solid var(--color-dark);
     }
   }
 }
@@ -715,13 +786,21 @@ h4,
     li {
       --padding-x: clamp(2rem, 4vw, 4rem);
       &:not(:first-child) {
-        padding-left: var(--padding-x);
+        padding-inline-start: var(--padding-x);
       }
 
       &:not(:last-child) {
-        padding-right: var(--padding-x);
-        border-right: 1px solid var(--color-light);
+        padding-inline-end: var(--padding-x);
+        border-inline-end: 1px solid var(--color-light);
       }
+    }
+  }
+}
+
+@media (min-width: 30em) {
+  .team {
+    .see-all button {
+      max-width: 16.875rem;
     }
   }
 }
@@ -737,7 +816,7 @@ h4,
       width: 100%;
       height: var(--navbar-height);
       translate: 100% 0;
-      border-bottom: 1px solid var(--color-dark);
+      border-block-end: 1px solid var(--color-dark);
       background-color: var(--color-light);
       transition: translate 0.2s ease-in-out;
     }
@@ -788,7 +867,7 @@ h4,
       align-items: center;
       h1 {
         order: -2;
-        margin-bottom: 0.625rem;
+        margin-block-end: 0.625rem;
       }
 
       .body {
@@ -800,13 +879,13 @@ h4,
         }
 
         .description {
-          margin-bottom: 2.5rem;
+          margin-block-end: 2.5rem;
         }
       }
 
       .image {
         order: -1;
-        margin-bottom: 1.25rem;
+        margin-block-end: 1.25rem;
       }
     }
   }
@@ -820,7 +899,7 @@ h4,
   .studies {
     .container {
       width: auto;
-      padding-left: var(--container-padding-x);
+      padding-inline-start: var(--container-padding-x);
     }
   }
 
@@ -843,28 +922,30 @@ h4,
 }
 
 @media (max-width: 29.99875em) {
-  .service-card {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 1.625rem 1.875rem;
-    .body {
-      display: contents;
-      h3 {
-        grid-column: -1 / 1;
-      }
+  .services-list {
+    article {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 1.625rem 1.875rem;
+      .body {
+        display: contents;
+        h3 {
+          grid-column: -1 / 1;
+        }
 
-      a {
-        align-self: end;
-        > span {
-          position: absolute !important;
-          width: 1px !important;
-          height: 1px !important;
-          padding: 0 !important;
-          margin: -1px !important;
-          overflow: hidden !important;
-          clip: rect(0, 0, 0, 0) !important;
-          white-space: nowrap !important;
-          border: 0 !important;
+        a {
+          align-self: end;
+          > span {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+          }
         }
       }
     }
@@ -881,6 +962,16 @@ h4,
     details {
       summary h3::before {
         font-size: 1.875rem;
+      }
+    }
+  }
+
+  .team-list {
+    article {
+      header {
+        .image {
+          width: 4.688rem;
+        }
       }
     }
   }
