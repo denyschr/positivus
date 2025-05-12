@@ -69,6 +69,10 @@ img {
   font-style: italic;
 }
 
+svg {
+  vertical-align: middle;
+}
+
 button {
   background-color: transparent;
   outline: transparent;
