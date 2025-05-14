@@ -1,0 +1,19 @@
+.studies-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  color: var(--color-light);
+  li {
+    display: grid;
+    align-items: start;
+    justify-items: start;
+    row-gap: 1.25rem;
+    a {
+      transition: opacity 0.2s ease-in-out;
+      @media (any-hover: hover) {
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}

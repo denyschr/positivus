@@ -1,0 +1,18 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 1rem;
+  font-size: var(--text-size-lg);
+  line-height: 1.4;
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.link-primary {
+  color: var(--color-primary);
+}
+
+.link-light {
+  color: var(--color-light);
+}

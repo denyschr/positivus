@@ -1,0 +1,12 @@
+.box {
+  padding-inline: 0.375rem;
+  border-radius: var(--radius-base);
+}
+
+.box-primary {
+  background-color: var(--color-primary);
+}
+
+.box-light {
+  background-color: var(--color-light);
+}

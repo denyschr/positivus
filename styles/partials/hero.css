@@ -1,0 +1,21 @@
+.hero {
+  padding-block: 0.625rem var(--section-padding-y);
+  .main {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    column-gap: 1.875rem;
+    margin-block-end: clamp(3.75rem, 8vw, 4.375rem);
+    .body {
+      display: grid;
+      justify-items: start;
+      row-gap: clamp(1.25rem, 2.5vw, 2.188rem);
+      max-width: 33.125rem;
+      .description {
+        max-width: 28.125rem;
+        font-size: clamp(var(--text-size-base), 2vw, var(--text-size-lg));
+        line-height: 1.4;
+      }
+    }
+  }
+}

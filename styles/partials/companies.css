@@ -1,0 +1,14 @@
+.companies {
+  --marquee-gap: 6rem;
+  &:not([data-animated="true"]) {
+    .marquee-inner {
+      justify-content: center;
+      row-gap: 1.25rem;
+      column-gap: clamp(2.375rem, 6vw, var(--marquee-gap));
+    }
+  }
+
+  img {
+    filter: grayscale(1);
+  }
+}

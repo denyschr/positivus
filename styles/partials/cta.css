@@ -1,0 +1,23 @@
+.cta {
+  --cta-image-offset-y: 1.5rem;
+  padding-block: var(--cta-image-offset-y);
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-gray);
+  }
+
+  .body {
+    display: grid;
+    row-gap: clamp(1.25rem, 3vw, 1.625rem);
+    justify-items: start;
+    padding: clamp(1.25rem, 6vw, 3.75rem);
+  }
+
+  .image {
+    margin-block: calc(var(--cta-image-offset-y) * -1);
+    padding-inline-end: clamp(3.75rem, 8.5vw, 8.438rem);
+  }
+}

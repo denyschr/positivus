@@ -1,0 +1,41 @@
+.marquee {
+  &[data-animated="true"] {
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-dark) 20% 80%,
+      transparent
+    );
+    mask: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-dark) 20% 80%,
+      transparent
+    );
+    > .marquee-inner {
+      flex-wrap: nowrap;
+      column-gap: var(--marquee-gap);
+      width: max-content;
+      will-change: transform; /* add optimizations for transform */
+      animation: marquee 30s linear infinite;
+      animation-direction: normal;
+      > * {
+        user-select: none;
+      }
+    }
+  }
+}
+
+.marquee-inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@keyframes marquee {
+  to {
+    translate: calc(-50% - var(--marquee-gap) * 0.5) 0;
+  }
+}

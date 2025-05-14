@@ -1,0 +1,19 @@
+body {
+  min-width: 20rem;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: clamp(var(--text-size-base), 2vw, var(--text-size-md));
+  line-height: 1.28;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  &.lock {
+    overflow: hidden;
+  }
+}
+
+main {
+  margin-block-start: var(--navbar-height);
+  > section:not(:first-child) {
+    padding-block: var(--section-padding-y);
+  }
+}

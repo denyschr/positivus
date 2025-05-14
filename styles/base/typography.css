@@ -1,0 +1,31 @@
+h1,
+.heading-1,
+h2,
+.heading-2,
+h3,
+.heading-3,
+h4,
+.heading-4 {
+  font-weight: var(--font-weight-medium);
+  line-height: 1.28;
+}
+
+h1,
+.heading-1 {
+  font-size: clamp(var(--text-size-5xl), 5vw, var(--text-size-6xl));
+}
+
+h2,
+.heading-2 {
+  font-size: clamp(var(--text-size-3xl), 5vw, var(--text-size-4xl));
+}
+
+h3,
+.heading-3 {
+  font-size: clamp(var(--text-size-xl), 2.5vw, var(--text-size-2xl));
+}
+
+h4,
+.heading-4 {
+  font-size: clamp(var(--text-size-md), 2vw, var(--text-size-lg));
+}

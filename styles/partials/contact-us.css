@@ -1,0 +1,41 @@
+.contact-us {
+  .container > .body {
+    position: relative;
+    padding: clamp(1.25rem, 6vw, 3.75rem) clamp(1.25rem, 6vw, 6.25rem)
+      clamp(1.25rem, 6vw, 5rem);
+    overflow-x: hidden;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-gray);
+    &::after {
+      --contact-us-image-offset-y: 3.875rem;
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      translate: -50% -50%;
+      height: calc(100% - var(--contact-us-image-offset-y) * 2);
+      aspect-ratio: 1;
+      background: url("../../assets/images/contact-us-illustration.svg") center /
+        contain no-repeat;
+    }
+  }
+
+  form {
+    display: grid;
+    row-gap: clamp(2.25rem, 5vw, 2.5rem);
+    > fieldset {
+      display: flex;
+      align-items: center;
+      gap: 2.188rem;
+    }
+
+    .body {
+      display: grid;
+      row-gap: 1.563rem;
+    }
+
+    textarea {
+      height: clamp(8.25rem, 18vw, 11.875rem);
+    }
+  }
+}
