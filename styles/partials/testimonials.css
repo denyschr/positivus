@@ -13,7 +13,7 @@
       --polygon-offset-left: clamp(2.875rem, 5vw, 3.25rem);
       display: grid;
       row-gap: 3rem;
-
+      user-select: none;
       .quote {
         position: relative;
         padding: clamp(1.875rem, 5vw, 3rem) var(--polygon-offset-left)
