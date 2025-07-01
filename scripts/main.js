@@ -4,8 +4,6 @@ import initSliders from "./sliders.js";
 
 initNavbar();
 
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  initMarquees();
-}
+initMarquees();
 
 initSliders();

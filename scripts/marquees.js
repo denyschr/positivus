@@ -1,4 +1,7 @@
-export default function initMarquees() {
+const initMarquees = () => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
   const containers = document.querySelectorAll("[data-marquee]");
   containers.forEach((container) => {
     container.setAttribute("data-animated", "true");
@@ -12,4 +15,6 @@ export default function initMarquees() {
       inner.appendChild(clone);
     });
   });
-}
+};
+
+export default initMarquees;
